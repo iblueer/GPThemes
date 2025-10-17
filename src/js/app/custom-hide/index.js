@@ -79,11 +79,9 @@ function handleChange({ target }) {
 
 	const { id } = target
 	const cfg = ELEMENTS_MAP.get(id)
-	const element = $(cfg?.selector)
 
-	if (!element) {
-		console.warn(`Element with ID ${id} not found`)
-		Notify.warning('Element not found')
+	if (!cfg) {
+		console.warn(`Unknown toggle id: ${id}`)
 		target.checked = !target.checked
 		return
 	}

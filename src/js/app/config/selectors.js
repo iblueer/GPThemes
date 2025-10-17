@@ -104,9 +104,9 @@ export const SELECTORS = {
 			SELECTOR: `header#page-header`,
 			// SELECTOR: `#page-header, .h-header-height.top-0`,
 		},
-		FOOTER: {
-			TOGGLE_ID: `${PFX}-hide-footer`,
-			SELECTOR: `#thread-bottom-container > #thread-bottom ~ div.min-h-8 > div`,
-		},
+	FOOTER: {
+		TOGGLE_ID: `${PFX}-hide-footer`,
+		SELECTOR: `[data-testid="thread-bottom-area"]`,
+	},
 	},
 }
