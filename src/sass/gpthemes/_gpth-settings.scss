@@ -1,35 +1,35 @@
+
 .#{$pfx}-settings {
-	--w-scrollbar: 0.2rem;
+    --w-scrollbar: 0.2rem;
 
-	--top: calc(var(--h-header) + 0.5rem + 3rem);
-	--right: 1.3rem;
-	--p: 2rem;
-	--max-h: 75vh;
-	--shadow-color: var(--c-accent-10);
-	--shadow-values: inset 0 0 20px 10px;
-	--c-scrollbar-thumb: var(--c-accent-30) !important;
-	top: var(--top);
-	right: var(--right);
-	width: clamp(25rem, 25vw, 30rem);
-	max-height: var(--max-h);
-	padding: var(--p);
-	opacity: 0;
-	@include menuBg;
-	border: 1px solid var(--c-accent-10);
-	border-radius: var(--br-dialog);
-	pointer-events: none;
-	transform: translateX(calc(100% + 1.5rem)) !important;
-	z-index: calc(var(--z-modal) + 10);
-	overflow: clip auto;
-	// overflow: clip;
-	transition: transform 0.3s $easeOutBack, opacity 0.3s ease;
-	// overscroll-behavior: contain;
+    --p: 2rem;
+    --max-h: 75vh;
+    --shadow-color: var(--c-accent-10);
+    --shadow-values: inset 0 0 20px 10px;
+    --c-scrollbar-thumb: var(--c-accent-30) !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: clamp(25rem, 25vw, 30rem);
+    max-height: var(--max-h);
+    padding: var(--p);
+    opacity: 0;
+    @include menuBg;
+    border: 1px solid var(--c-accent-10);
+    border-radius: var(--br-dialog);
+    pointer-events: none;
+    transform: translate(-50%, -40%) scale(0.92);
+    z-index: calc(var(--z-modal) + 10);
+    overflow: clip auto;
+    transition:
+        transform 0.28s $easeOutBack,
+        opacity 0.25s ease;
 
-	&--open {
-		opacity: 1 !important;
-		pointer-events: all !important;
-		transform: translateX(0%) !important;
-	}
+    &--open {
+        opacity: 1 !important;
+        pointer-events: all !important;
+        transform: translate(-50%, -50%) scale(1);
+    }
 
 	@include dev('sm') {
 		--p: 4vw;
@@ -46,19 +46,19 @@
 	}
 
 	// section {
-	.#{$pfx}-tab-content {
-		overflow-y: auto;
-		max-height: calc(var(--max-h) * 0.625);
+    .#{$pfx}-tab-content {
+        overflow-y: auto;
+        max-height: calc(var(--max-h) * 0.7);
 
-		.#{$pfx}-pane {
-			margin-inline: 0.2rem; // simulate space from the scrollbar
-		}
-	}
+        .#{$pfx}-pane {
+            margin-inline: 0.2rem; // simulate space from the scrollbar
+        }
+    }
 
-	[role="separator"] {
-		display: block !important;
-		--border-light: var(--c-border) !important;
-	}
+    [role="separator"] {
+        display: block !important;
+        --border-light: var(--c-border) !important;
+    }
 }
 
 html.dark .#{$pfx}-settings {
