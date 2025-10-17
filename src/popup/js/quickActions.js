@@ -9,10 +9,6 @@ import {
 const ACTIONS_CONTAINER_ID = "quick-actions";
 let statusTimer = null;
 
-const CHATGPT_URL_PREFIXES = [
-  "https://chat.openai.com/",
-  "https://chatgpt.com/",
-];
 const CHATGPT_URL_PATTERNS = [
   "https://chat.openai.com/*",
   "https://chatgpt.com/*",
@@ -153,10 +149,6 @@ function resolveErrorMessage(error) {
   }
 
   return "Action failed. Is ChatGPT tab active?";
-}
-
-function isChatGptUrl(url = "") {
-  return CHATGPT_URL_PREFIXES.some((prefix) => url.startsWith(prefix));
 }
 
 async function sendMessageWithRetry(tabId, payload, attempts = 3) {
