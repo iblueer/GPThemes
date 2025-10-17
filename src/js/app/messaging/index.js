@@ -1,26 +1,25 @@
 import browser from 'webextension-polyfill'
-// import { toggleFloatingBtnVisibility } from './floatingBtn'
-// import { SELECTORS } from './config/selectors'
-import { toggleFloatingBtnVisibility } from '../FAB'
+import { openSettings } from '../settingsManager.js'
+import { applyTheme } from '../themeManager.js'
 
 /* Handles extension messages for the floating button and other features */
 function setupExtensionMessaging() {
 	if (!browser?.runtime?.onMessage) return
 
-	browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+	browser.runtime.onMessage.addListener((msg) => {
 		console.log(msg)
 
-		// Not used for now
-		/* if (msg?.action === 'isFloatingBtnExists') {
-			sendResponse({ exists: !!document.querySelector(`.${SELECTORS.FLOATING_BTN.ROOT}`) })
-			return
-		} */
-
-		if (msg?.action === 'toggleFloatingBtnVisibility') {
-			toggleFloatingBtnVisibility(msg.visible)
-			// No need to update storage here - popup already did that
-			return
+		if (msg?.action === 'openSettingsPanel') {
+			openSettings()
+			return { ok: true }
 		}
+
+		if (msg?.action === 'applyTheme' && msg.theme) {
+			applyTheme(msg.theme)
+			return { ok: true }
+		}
+
+		return { ok: false }
 	})
 }
 

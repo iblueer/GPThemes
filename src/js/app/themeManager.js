@@ -59,10 +59,10 @@ function handleChangeTheme(e) {
 	const themeBtn = e.target.closest('button')
 	if (!themeBtn) return
 
-	const themeId = themeBtn.id
+	applyTheme(themeBtn.id)
+}
 
-	// console.log(themeId)
-
+function applyTheme(themeId) {
 	switch (themeId) {
 		case THEMES.LIGHT:
 		case THEMES.DARK:
@@ -98,4 +98,4 @@ function init() {
 	}
 }
 
-export { init, handleChangeTheme }
+export { init, handleChangeTheme, applyTheme }
